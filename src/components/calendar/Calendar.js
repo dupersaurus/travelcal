@@ -24,9 +24,6 @@ export default class Calendar extends Component {
             ending = moment(start).endOf("month").endOf("week");
         }
 
-        console.log(beginning);
-        console.log(ending);
-
         const weeks = [];
         let iterator = beginning;
         let week = 0;
@@ -64,7 +61,9 @@ export default class Calendar extends Component {
                                     {week.map((day, dayIndex) => <CalendarDay 
                                                                     key={dayIndex} 
                                                                     firstDay={weekIndex === 0 && dayIndex === 0} 
-                                                                    day={day} />)}
+                                                                    day={day}
+                                                                    destinations={this.props.destinations}
+                                                                 />)}
                                 </div>
                             )
                         })

@@ -5,7 +5,10 @@ import {DestinationActions} from "../actions/destinations"
 const initial = {
     id: null,
     origin: null,
-    destination: null
+    destination: null,
+    startDate: null,
+    endDate: null,
+    color: null
 }
 
 export function destinations(state = [], action) {
@@ -22,6 +25,12 @@ export function destinations(state = [], action) {
         case DestinationActions.UpdateDestination:
             return updateDestination(state, action);
 
+        case DestinationActions.UpdateStartDate:
+            return updateStartDate(state, action);
+
+        case DestinationActions.UpdateEndDate:
+            return updateEndDate(state, action);
+
         default:   
             return state;
     }
@@ -30,7 +39,7 @@ export function destinations(state = [], action) {
 function add(state, action) {
     return [
         ...state,
-        Object.assign(_.clone(initial), {id: action.id})
+        Object.assign(_.clone(initial), {...action.props})
     ]
 }
 
@@ -66,6 +75,36 @@ function updateDestination(state, action) {
 
     const {match, index} = dest;
     match.destination = action.destination;
+    destinations[index] = match;
+
+    return destinations;
+}
+
+function updateStartDate(state, action) {
+    const destinations = [...state];
+    const dest = findMatch(action.id, destinations);
+
+    if (dest == null) {
+        return state;
+    }
+
+    const {match, index} = dest;
+    match.startDate = action.date;
+    destinations[index] = match;
+
+    return destinations;
+}
+
+function updateEndDate(state, action) {
+    const destinations = [...state];
+    const dest = findMatch(action.id, destinations);
+
+    if (dest == null) {
+        return state;
+    }
+
+    const {match, index} = dest;
+    match.endDate = action.date;
     destinations[index] = match;
 
     return destinations;

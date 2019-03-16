@@ -5,11 +5,58 @@
     height: 100px;
 }
 
+.destination-bar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+
+    padding: 5px;
+    text-align: left;
+}
+
 .day .label {
     position: absolute;
-    top: 5px;
     left: 5px;
+    bottom: 5px;
 
     font-weight: 500;
     font-size: 125%;
+}
+
+.destinations {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.destinations .destination {
+    flex: 0 1 50%;
+    height: 24px;
+    z-index: -10;
+}
+
+.destinations.count-1 .destination {
+    flex: 0 1 100%;
+}
+
+.destinations.count-2 {
+    flex-direction: column;
+}
+
+.destinations.count-2 .destination {
+    flex: 0 1 12px;
+}
+
+.destinations.count-3 .destination {
+    height: 12px;
+}
+
+.destinations.count-3 .destination:first-child {
+    flex: 0 1 100%;
 }
