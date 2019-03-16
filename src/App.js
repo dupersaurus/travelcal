@@ -19,7 +19,12 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="App">
-          <Calendar />
+          <div className="app-calendar">
+            <Calendar />
+          </div>
+          <div className="app-sidebar">
+          
+          </div>
         </div>
       </Provider>
     );
