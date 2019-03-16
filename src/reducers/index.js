@@ -1,12 +1,15 @@
 import {destinations} from "./destinations"
+import {events} from "./events"
 
 const initialState = {
-    destinations: []
+    destinations: [],
+    events: []
 }
 
 function travelCalApp(state = initialState, action) {
     return {
-        destinations: destinations(state.destinations, action)
+        destinations: destinations(state.destinations, action),
+        events: events(state.events, action)
     }
 }
 

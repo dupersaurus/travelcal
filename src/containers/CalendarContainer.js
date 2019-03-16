@@ -4,7 +4,8 @@ import Calendar from "../components/calendar/Calendar"
 
 const mapStateToProps = state => {
     return {
-        destinations: state.destinations
+        destinations: state.destinations,
+        events: state.events
     }
 }
 

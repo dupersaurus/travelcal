@@ -8,11 +8,16 @@ import './App.css';
 import Calendar from "./containers/CalendarContainer"
 
 import {addDestination} from "./actions/destinations"
+import {addEvent, updateEventName, updateEventDate} from "./actions/events"
 
 const store = createStore(travelCalApp);
 store.dispatch(addDestination(1, "2019-03-13", "2019-03-21", "#c00"))
 store.dispatch(addDestination(2, "2019-03-16", "2019-03-18", "#0c0"))
 store.dispatch(addDestination(3, "2019-03-18", "2019-03-20", "#00c"))
+
+store.dispatch(addEvent(1))
+store.dispatch(updateEventName(1, "Test Event"))
+store.dispatch(updateEventDate(1, "1-1", "2019-03-14", "2019-03-14"))
 
 class App extends Component {
   render() {
