@@ -54,7 +54,7 @@ export function events(state = [], action) {
 function add(state, action) {
     return [
         ...state,
-        Object.assign(_.clone(initial), {id: action.id})
+        Object.assign(_.cloneDeep(initial), {id: action.id})
     ]
 }
 

@@ -37,7 +37,7 @@
 
 .destinations .destination {
     flex: 0 1 50%;
-    height: 24px;
+    height: 16px;
     z-index: -10;
 }
 
@@ -50,13 +50,17 @@
 }
 
 .destinations.count-2 .destination {
-    flex: 0 1 12px;
+    flex: 0 1 8px;
 }
 
 .destinations.count-3 .destination {
-    height: 12px;
+    height: 8px;
 }
 
 .destinations.count-3 .destination:first-child {
     flex: 0 1 100%;
+}
+
+.events {
+    margin-top: 15px;
 }

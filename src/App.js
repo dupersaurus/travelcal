@@ -16,8 +16,20 @@ store.dispatch(addDestination(2, "2019-03-16", "2019-03-18", "#0c0"))
 store.dispatch(addDestination(3, "2019-03-18", "2019-03-20", "#00c"))
 
 store.dispatch(addEvent(1))
-store.dispatch(updateEventName(1, "Test Event"))
-store.dispatch(updateEventDate(1, "1-1", "2019-03-14", "2019-03-14"))
+store.dispatch(updateEventName(1, "All Day Event"))
+store.dispatch(updateEventDate(1, "1-1", "2019-03-13 00:00", "2019-03-13 23:59"))
+
+store.dispatch(addEvent(2))
+store.dispatch(updateEventName(2, "Partial Day"))
+store.dispatch(updateEventDate(2, "2-1", "2019-03-13 9:30", "2019-03-13 13:00"))
+
+store.dispatch(addEvent(3))
+store.dispatch(updateEventName(3, "Two Days"))
+store.dispatch(updateEventDate(3, "3-1", "2019-03-14 9:30", "2019-03-15 13:00"))
+
+store.dispatch(addEvent(4))
+store.dispatch(updateEventName(4, "Three Days"))
+store.dispatch(updateEventDate(4, "3-1", "2019-03-16 9:30", "2019-03-18 13:00"))
 
 class App extends Component {
   render() {

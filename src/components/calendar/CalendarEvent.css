@@ -1,0 +1,12 @@
+.calendar-event {
+    font-size: 75%
+}
+
+.calendar-event .event-name {
+    font-weight: 600;
+    margin-right: 3px;
+}
+
+.calendar-event .event-time {
+    
+}

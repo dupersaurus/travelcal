@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import './CalendarDay.css'
+import CalendarEvent from "./CalendarEvent"
+
+import {EVENT_DATE_FORMAT} from "../../dateUtils"
 
 const moment = require('moment');
 
@@ -9,10 +12,13 @@ export default class CalendarDay extends Component {
      * Find the destinations matching day.
      */
     findDestinations() {
-        const destinations = this.props.destinations;
         const matches = [];
 
-        destinations.forEach((destination) => {
+        if (this.props.destinations == null) {
+            return [];
+        }
+
+        this.props.destinations.forEach((destination) => {
             const start = moment(destination.start);
             const end = moment(destination.end);
 
@@ -24,11 +30,48 @@ export default class CalendarDay extends Component {
         return matches;
     }
 
+    findEvents() {
+        const events = [];
+
+        if (this.props.events == null) {
+            return events;
+        }
+
+        this.props.events.forEach((event) => {
+            let dates = [];
+
+            for (let date of event.dates) {
+                const start = moment(date.start, EVENT_DATE_FORMAT);
+                const end = moment(date.end, EVENT_DATE_FORMAT);
+
+                if (start.isSame(end, "day")) {
+                    if (start.isSame(this.props.day, "day")) {
+                        dates.push(date)
+                        break;
+                    }
+                } else if (this.props.day.isBetween(start, end, "day", "[]")) {
+                    dates.push(date)
+                    break;
+                }
+            }
+
+            if (dates.length > 0) {
+                events.push({event, dates});
+            }
+        })
+
+        return events;
+    }
+
     render() {
         return (
         <div className="day">
             <div className="destination-bar">
                 {this.drawDestination()}
+            </div>
+
+            <div className="events">
+                {this.drawEvents()}
             </div>
 
             <div className="label">
@@ -57,8 +100,9 @@ export default class CalendarDay extends Component {
         body = (
             <div className={`destinations count-${matches.length}`}>
                 {
-                    matches.map((match) => (
-                        <div className="destination" 
+                    matches.map((match, index) => (
+                        <div key={index} 
+                            className="destination" 
                             style={{backgroundColor: match.color}} />
                     ))
                 }
@@ -66,5 +110,27 @@ export default class CalendarDay extends Component {
         )
 
         return body;
+    }
+
+    drawEvents() {
+        const events = this.findEvents();
+
+        if (events.length === 0) {
+            return null;
+        }
+
+        return (
+            <div className="calendar-events">
+                {
+                    events.map((event) => (
+                        <CalendarEvent
+                            key={event.event.id}
+                            day={this.props.day}
+                            event={event}
+                        />
+                    ))
+                }
+            </div>
+        )
     }
 }

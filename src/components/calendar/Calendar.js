@@ -12,9 +12,6 @@ export default class Calendar extends Component {
      * @param {moment} [end] 
      */
     generateView(start, end) {
-        console.log(start)
-        console.log(end)
-
         const beginning = moment(start).startOf("month").startOf("week");
         let ending = null;
 
@@ -63,6 +60,7 @@ export default class Calendar extends Component {
                                                                     firstDay={weekIndex === 0 && dayIndex === 0} 
                                                                     day={day}
                                                                     destinations={this.props.destinations}
+                                                                    events={this.props.events}
                                                                  />)}
                                 </div>
                             )
