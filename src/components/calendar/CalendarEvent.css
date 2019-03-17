@@ -1,5 +1,11 @@
 .calendar-event {
-    font-size: 75%
+    font-size: 75%;
+    margin-bottom: 2px;
+    cursor: pointer;
+}
+
+.calendar-event:hover {
+    background-color: #ddd;
 }
 
 .calendar-event .event-name {
