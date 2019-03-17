@@ -10,3 +10,16 @@
 .calendar-event .event-time {
     
 }
+
+.calendar-event .event-span {
+    width: 100%;
+    position: relative;
+}
+
+.calendar-event .event-span .span-caret {
+    position: absolute;
+    top: 0px;
+    height: 2px;
+
+    background-color: #f0f;
+}

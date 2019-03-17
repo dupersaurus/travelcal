@@ -6,6 +6,10 @@ export const EVENT_DATE_FORMAT = "YYYY-MM-DD H:m"
 export const START_OF_DAY = "0:0";
 export const END_OF_DAY = "23:59";
 
+// 1440 would be correct, but that'd be 0 minutes on the next day
+// life is easier this way
+export const MINUTES_IN_DAY = 1439;
+
 /**
  * Returns if an event is all day
  * @param {moment} day

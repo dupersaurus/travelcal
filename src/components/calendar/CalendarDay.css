@@ -45,11 +45,7 @@
     flex: 0 1 100%;
 }
 
-.destinations.count-2 {
-    flex-direction: column;
-}
-
-.destinations.count-2 .destination {
+.destinations.count-2.flex-column .destination {
     flex: 0 1 8px;
 }
 
@@ -59,6 +55,10 @@
 
 .destinations.count-3 .destination:first-child {
     flex: 0 1 100%;
+}
+
+.flex-column {
+    flex-direction: column;
 }
 
 .events {

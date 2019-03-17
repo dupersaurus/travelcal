@@ -92,13 +92,20 @@ export default class CalendarDay extends Component {
     drawDestination() {
         const matches = this.findDestinations();
         let body = null;
+        let isOverlap = false;
 
         if (matches.length === 0) {
             return null;
         }
 
+        // if end date equals start date, then the two don't overlap
+        // 
+        if (matches.length == 2) {
+            isOverlap = !(matches[0].start === matches[1].end || matches[0].end === matches[1].start);
+        }
+
         body = (
-            <div className={`destinations count-${matches.length}`}>
+            <div className={`destinations count-${matches.length} ${isOverlap ? "flex-column" : ""}`}>
                 {
                     matches.map((match, index) => (
                         <div key={index} 

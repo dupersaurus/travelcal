@@ -14,6 +14,8 @@ const store = createStore(travelCalApp);
 store.dispatch(addDestination(1, "2019-03-13", "2019-03-21", "#c00"))
 store.dispatch(addDestination(2, "2019-03-16", "2019-03-18", "#0c0"))
 store.dispatch(addDestination(3, "2019-03-18", "2019-03-20", "#00c"))
+store.dispatch(addDestination(4, "2019-03-21", "2019-03-22", "#cc0"))
+store.dispatch(addDestination(5, "2019-03-23", "2019-03-24", "#0cc"))
 
 store.dispatch(addEvent(1))
 store.dispatch(updateEventName(1, "All Day Event"))
