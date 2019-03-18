@@ -17,14 +17,16 @@ export function trip(state = {name: "Unnamed Trip", start: null, end: null}, act
 }
 
 function updateName(state, action) {
-    return Object.assign(state, {name: action.name});
+    return {
+        ...state,
+        name: action.name
+    }
 }
 
 function updateDates(state, action) {
-    console.log(action);
-
-    const startDate = action.start ? {start: action.start} : {}
-    const endDate = action.end ? {end: action.end} : {}
-
-    return _.extend(state, startDate, endDate);
+    return {
+        ...state,
+        start: action.start ? action.start : state.start,
+        end: action.end ? action.end : state.end,
+    }
 }
