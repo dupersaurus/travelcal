@@ -3,10 +3,7 @@ import { connect } from "react-redux"
 import Calendar from "../components/calendar/Calendar"
 
 const mapStateToProps = state => {
-    return {
-        destinations: state.destinations,
-        events: state.events
-    }
+    return {...state}
 }
 
 const CalendarContainer = connect(
