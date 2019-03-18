@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom";
 
+import Grid from '@material-ui/core/Grid';
+import {
+    Typography,
+    Button,
+    TextField
+  } from '@material-ui/core';
+
 export default class Day extends Component {
     render() {
         return (
             <div>
-                <h4>{this.props.match.params.date}</h4>
-                <Link to="/">Back to Trip</Link>
+                <div>
+                    <Grid container justify="space-between">
+                        <Typography component="h4" variant="h4">{this.props.match.params.date}</Typography>
+                        <Link to="/">Back to Trip</Link>
+                    </Grid>
+                </div>
             </div>
         )
     }

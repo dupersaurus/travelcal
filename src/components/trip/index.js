@@ -76,11 +76,6 @@ export default class Trip extends Component {
                             />
                         </Grid>
                     </div>
-                    <div>
-                        <b>Name</b> {this.props.trip.name}<br/>
-                        <b>Start</b> {this.props.trip.start}<br/>
-                        <b>End</b> {this.props.trip.end}<br/>
-                    </div>
                 </form>
             </div>
         )

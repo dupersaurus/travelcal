@@ -13,6 +13,19 @@ export default class Calendar extends Component {
     }
 
     /**
+     * Get which day is currently selected.
+     * TODO find a better way to do it
+     * @returns {string|null} The selected date, or null if not selected
+     */
+    getSelectedDay() {
+        if (this.props.location.pathname.indexOf("/day/") > -1) {
+            return this.props.location.pathname.split("/").pop();
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * 
      * @param {moment} start 
      * @param {moment} [end] 
@@ -47,9 +60,35 @@ export default class Calendar extends Component {
         return weeks;
     }
 
+    isDayInRange(day) {
+        if (this.props.trip.start == null && this.props.trip.end == null) {
+            return true;
+        }
+
+        else if (this.props.trip.end == null) {
+            const start = moment(this.props.trip.start);
+
+            return day.isSameOrAfter(start);
+        }
+
+        else if (this.props.trip.start == null) {
+            const end = moment(this.props.trip.end);
+
+            return day.isSameOrBefore(end);
+        }
+
+        else {
+            const start = moment(this.props.trip.start);
+            const end = moment(this.props.trip.end);
+
+            return day.isBetween(start, end, "day", "[]");
+        }
+    }
+
     render() {
         const today = moment();
         const weeks = this.generateView(today);
+        const selectedDay = this.getSelectedDay();
 
         return (
             <div className="calendar">
@@ -65,6 +104,8 @@ export default class Calendar extends Component {
                                         key={dayIndex} 
                                         firstDay={weekIndex === 0 && dayIndex === 0} 
                                         day={day}
+                                        isSelected={day.format(DESTINATION_DATE_FORMAT) === selectedDay}
+                                        isInRange={this.isDayInRange(day)}
                                         destinations={this.props.destinations}
                                         events={this.props.events}
                                         onViewDay={() => this.viewDay(day)}

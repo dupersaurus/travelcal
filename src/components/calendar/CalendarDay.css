@@ -4,6 +4,14 @@
     flex: 0 1 14.2%;
 }
 
+.day.outside {
+    background-color: #eee;
+}
+
+.day.selected {
+    background-color: #eee2d2;
+}
+
 .destination-bar {
     position: absolute;
     top: 0px;
@@ -37,7 +45,6 @@
 .destinations .destination {
     flex: 0 1 50%;
     height: 16px;
-    z-index: -10;
 }
 
 .destinations.count-1 .destination {

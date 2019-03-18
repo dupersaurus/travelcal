@@ -4,7 +4,8 @@ import CalendarEvent from "./CalendarEvent"
 
 import {EVENT_DATE_FORMAT} from "../../dateUtils"
 
-const moment = require('moment');
+const moment = require("moment");
+const classnames = require("classnames");
 
 export default class CalendarDay extends Component {
 
@@ -64,20 +65,22 @@ export default class CalendarDay extends Component {
     }
 
     render() {
+        const classes = classnames("day", {selected: this.props.isSelected, outside: !this.props.isInRange});
+
         return (
-        <div className="day" onClick={this.props.onViewDay}>
-            <div className="destination-bar">
-                {this.drawDestination()}
-            </div>
+            <div className={classes} onClick={this.props.onViewDay}>
+                <div className="destination-bar">
+                    {this.drawDestination()}
+                </div>
 
-            <div className="events">
-                {this.drawEvents()}
-            </div>
+                <div className="events">
+                    {this.drawEvents()}
+                </div>
 
-            <div className="label">
-                {this.drawDate()}
+                <div className="label">
+                    {this.drawDate()}
+                </div>
             </div>
-        </div>
         )
     }
 
