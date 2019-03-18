@@ -7,7 +7,7 @@ import travelCalApp from "./reducers"
 
 import './App.css';
 import Calendar from "./containers/CalendarContainer"
-import SidebarRouter from "./containers/SidebarContainer"
+import SidebarRouter from "./components/sidebar"
 
 import {addDestination} from "./actions/destinations"
 import {addEvent, updateEventName, updateEventDate} from "./actions/events"

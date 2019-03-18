@@ -1,3 +1,5 @@
+import _ from "lodash"
+
 import {TripActions} from "../actions/trip"
 
 export function trip(state = {name: "Unnamed Trip", start: null, end: null}, action) {
@@ -19,5 +21,10 @@ function updateName(state, action) {
 }
 
 function updateDates(state, action) {
-    return Object.assign(state, {start: action.start, end: action.end});
+    console.log(action);
+
+    const startDate = action.start ? {start: action.start} : {}
+    const endDate = action.end ? {end: action.end} : {}
+
+    return _.extend(state, startDate, endDate);
 }
