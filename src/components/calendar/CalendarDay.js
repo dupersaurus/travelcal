@@ -65,7 +65,7 @@ export default class CalendarDay extends Component {
 
     render() {
         return (
-        <div className="day">
+        <div className="day" onClick={this.props.onViewDay}>
             <div className="destination-bar">
                 {this.drawDestination()}
             </div>
@@ -100,7 +100,7 @@ export default class CalendarDay extends Component {
 
         // if end date equals start date, then the two don't overlap
         // 
-        if (matches.length == 2) {
+        if (matches.length === 2) {
             isOverlap = !(matches[0].start === matches[1].end || matches[0].end === matches[1].start);
         }
 

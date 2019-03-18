@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import './Calendar.css'
 import CalendarDay from "./CalendarDay"
 
+import {DESTINATION_DATE_FORMAT} from "../../dateUtils"
+
 const moment = require('moment');
 
 export default class Calendar extends Component {
+
+    viewDay(date) {
+        this.props.history.push(`/day/${date.format(DESTINATION_DATE_FORMAT)}`)
+    }
 
     /**
      * 
@@ -56,12 +62,13 @@ export default class Calendar extends Component {
                             return (
                                 <div key={weekIndex} className="week">
                                     {week.map((day, dayIndex) => <CalendarDay 
-                                                                    key={dayIndex} 
-                                                                    firstDay={weekIndex === 0 && dayIndex === 0} 
-                                                                    day={day}
-                                                                    destinations={this.props.destinations}
-                                                                    events={this.props.events}
-                                                                 />)}
+                                        key={dayIndex} 
+                                        firstDay={weekIndex === 0 && dayIndex === 0} 
+                                        day={day}
+                                        destinations={this.props.destinations}
+                                        events={this.props.events}
+                                        onViewDay={() => this.viewDay(day)}
+                                    />)}
                                 </div>
                             )
                         })

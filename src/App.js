@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import { createStore } from "redux"
 import { Provider } from "react-redux"
@@ -6,6 +7,7 @@ import travelCalApp from "./reducers"
 
 import './App.css';
 import Calendar from "./containers/CalendarContainer"
+import SidebarRouter from "./components/sidebar"
 
 import {addDestination} from "./actions/destinations"
 import {addEvent, updateEventName, updateEventDate} from "./actions/events"
@@ -36,16 +38,18 @@ store.dispatch(updateEventDate(4, "3-1", "2019-03-16 9:30", "2019-03-18 13:00"))
 class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <div className="App">
-          <div className="app-calendar">
-            <Calendar />
+      <Router>
+        <Provider store={store}>
+          <div className="App">
+            <div className="app-calendar">
+              <Route component={Calendar} />
+            </div>
+            <div className="app-sidebar">
+              <SidebarRouter />
+            </div>
           </div>
-          <div className="app-sidebar">
-          
-          </div>
-        </div>
-      </Provider>
+        </Provider>
+      </Router>
     );
   }
 }
