@@ -1,0 +1,27 @@
+.destinations {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.destinations .destination {
+    flex: 0 1 50%;
+    height: 16px;
+}
+
+.destinations.count-1 .destination {
+    flex: 0 1 100%;
+}
+
+.destinations.count-2.flex-column .destination {
+    flex: 0 1 8px;
+}
+
+.flex-column {
+    flex-direction: column;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './CalendarDay.css'
 import CalendarEvent from "./CalendarEvent"
+import DestinationTimeline from "../destinationTimeline/DestinationTimeline"
 
 import {EVENT_DATE_FORMAT} from "../../utils/dateUtils"
 import {doDestinationsOverlap} from "../../utils/destination"
@@ -94,33 +95,7 @@ export default class CalendarDay extends Component {
     }
 
     drawDestination() {
-        const matches = this.findDestinations();
-        let body = null;
-        let isOverlap = false;
-
-        if (matches.length === 0) {
-            return null;
-        }
-
-        // if end date equals start date, then the two don't overlap
-        // 
-        if (matches.length === 2) {
-            isOverlap = doDestinationsOverlap(matches[0], matches[1]);
-        }
-
-        body = (
-            <div className={`destinations count-${matches.length} ${isOverlap ? "flex-column" : ""}`}>
-                {
-                    matches.map((match, index) => (
-                        <div key={index} 
-                            className="destination" 
-                            style={{backgroundColor: match.color}} />
-                    ))
-                }
-            </div>
-        )
-
-        return body;
+        return <DestinationTimeline day={this.props.day} destinations={this.props.destinations} />
     }
 
     drawEvents() {

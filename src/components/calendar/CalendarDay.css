@@ -42,31 +42,6 @@
     width: 100%;
 }
 
-.destinations .destination {
-    flex: 0 1 50%;
-    height: 16px;
-}
-
-.destinations.count-1 .destination {
-    flex: 0 1 100%;
-}
-
-.destinations.count-2.flex-column .destination {
-    flex: 0 1 8px;
-}
-
-.destinations.count-3 .destination {
-    height: 8px;
-}
-
-.destinations.count-3 .destination:first-child {
-    flex: 0 1 100%;
-}
-
-.flex-column {
-    flex-direction: column;
-}
-
 .events {
     margin-top: 15px;
 }
