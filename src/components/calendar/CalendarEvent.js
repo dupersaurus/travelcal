@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { EVENT_DATE_FORMAT, MINUTES_IN_DAY, isEventAllDay } from "../../dateUtils"
+import { EVENT_DATE_FORMAT, MINUTES_IN_DAY, isEventAllDay } from "../../utils/dateUtils"
 
 import "./CalendarEvent.css"
 

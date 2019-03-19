@@ -9,15 +9,27 @@ import './App.css';
 import Calendar from "./containers/CalendarContainer"
 import SidebarRouter from "./components/sidebar"
 
-import {addDestination} from "./actions/destinations"
+import {updateTripName, updateTripDates} from "./actions/trip"
+import {addDestination, updateOrigin, updateDestination} from "./actions/destinations"
 import {addEvent, updateEventName, updateEventDate} from "./actions/events"
 
 const store = createStore(travelCalApp);
+
+store.dispatch(updateTripName("Test Vacation"))
+store.dispatch(updateTripDates("2019-03-13", "2019-03-24"))
+
 store.dispatch(addDestination(1, "2019-03-13", "2019-03-21", "#c00"))
+store.dispatch(updateOrigin(1, "RDU"))
+store.dispatch(updateDestination(1, "Paris"))
 store.dispatch(addDestination(2, "2019-03-16", "2019-03-18", "#0c0"))
-store.dispatch(addDestination(3, "2019-03-18", "2019-03-20", "#00c"))
+store.dispatch(updateOrigin(2, "Paris"))
+store.dispatch(updateDestination(2, "Geneva"))
 store.dispatch(addDestination(4, "2019-03-21", "2019-03-22", "#cc0"))
+store.dispatch(updateOrigin(4, "Paris"))
+store.dispatch(updateDestination(4, "London"))
 store.dispatch(addDestination(5, "2019-03-23", "2019-03-24", "#0cc"))
+store.dispatch(updateOrigin(5, "London"))
+store.dispatch(updateDestination(5, "Edinburgh"))
 
 store.dispatch(addEvent(1))
 store.dispatch(updateEventName(1, "All Day Event"))

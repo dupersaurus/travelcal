@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './Calendar.css'
 import CalendarDay from "./CalendarDay"
 
-import {DESTINATION_DATE_FORMAT} from "../../dateUtils"
+import {DESTINATION_DATE_FORMAT} from "../../utils/dateUtils"
 
 const moment = require('moment');
 

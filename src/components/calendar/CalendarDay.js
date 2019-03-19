@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import './CalendarDay.css'
 import CalendarEvent from "./CalendarEvent"
 
-import {EVENT_DATE_FORMAT} from "../../dateUtils"
+import {EVENT_DATE_FORMAT} from "../../utils/dateUtils"
+import {doDestinationsOverlap} from "../../utils/destination"
 
 const moment = require("moment");
 const classnames = require("classnames");
@@ -104,7 +105,7 @@ export default class CalendarDay extends Component {
         // if end date equals start date, then the two don't overlap
         // 
         if (matches.length === 2) {
-            isOverlap = !(matches[0].start === matches[1].end || matches[0].end === matches[1].start);
+            isOverlap = doDestinationsOverlap(matches[0], matches[1]);
         }
 
         body = (
